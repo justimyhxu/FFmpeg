@@ -204,7 +204,7 @@ static void h264_initialise_ref_list(H264Context *h, H264SliceContext *sl)
         for (i = 0; i < sl->ref_count[j]; i++) {
             if (sl->ref_list[j][i].parent) {
                 if (mismatches_ref(h, sl->ref_list[j][i].parent)) {
-                    av_log(h->avctx, AV_LOG_ERROR, "Discarding mismatching reference\n");
+//                     av_log(h->avctx, AV_LOG_ERROR, "Discarding mismatching reference\n");
                     memset(&sl->ref_list[j][i], 0, sizeof(sl->ref_list[j][i]));
                 }
             }
@@ -641,7 +641,7 @@ int ff_h264_execute_ref_pic_marking(H264Context *h)
                 if (mmco[i].opcode != MMCO_SHORT2LONG ||
                     !h->long_ref[mmco[i].long_arg]    ||
                     h->long_ref[mmco[i].long_arg]->frame_num != frame_num) {
-                    av_log(h->avctx, h->short_ref_count ? AV_LOG_ERROR : AV_LOG_DEBUG, "mmco: unref short failure\n");
+//                     av_log(h->avctx, h->short_ref_count ? AV_LOG_ERROR : AV_LOG_DEBUG, "mmco: unref short failure\n");
                     err = AVERROR_INVALIDDATA;
                 }
                 continue;
